@@ -32,17 +32,17 @@ flowchart LR
   end
 
   %% Orchestration & DDL/ETL scripts
-  init_db["init_database.sql\n(create DB & schemas)"]
-  ddl_bronze["scripts/ddl_bronze.sql\n(create bronze tables)"]
-  proc_load["scripts/proc_load_bronze.sql\n(BULK INSERT loader)"]
+  init_db["init_database.sql<br/>(create DB & schemas)"]
+  ddl_bronze["scripts/ddl_bronze.sql<br/>(create bronze tables)"]
+  proc_load["scripts/proc_load_bronze.sql<br/>(BULK INSERT loader)"]
 
   %% Flow: Source -> Bronze
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_crm_cust
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_crm_prd
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_crm_sales
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_erp_loc
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_erp_cust
-  CSV -->|BULK INSERT (proc_load_bronze.sql)| b_erp_px
+  CSV -->|BULK INSERT| b_crm_cust
+  CSV -->|BULK INSERT| b_crm_prd
+  CSV -->|BULK INSERT| b_crm_sales
+  CSV -->|BULK INSERT| b_erp_loc
+  CSV -->|BULK INSERT| b_erp_cust
+  CSV -->|BULK INSERT| b_erp_px
 
   %% Bronze -> Silver (cleanse / validate)
   b_crm_cust -->|Cleansing / Type checks / Enrich| s_cleansed
@@ -53,9 +53,9 @@ flowchart LR
   b_erp_px -->|Category mapping| s_cleansed
 
   %% Silver -> Gold (integration & modeling)
-  s_cleansed -->|Build dimensions & facts (star schema)| g_dim_cust
-  s_cleansed -->|Build dimensions & facts (star schema)| g_dim_prd
-  s_cleansed -->|Build dimensions & facts (star schema)| g_fact_sales
+  s_cleansed -->|Build dimensions & facts| g_dim_cust
+  s_cleansed -->|Build dimensions & facts| g_dim_prd
+  s_cleansed -->|Build dimensions & facts| g_fact_sales
 
   %% Consumption
   g_dim_cust -->|Used by| Reports[/"Analytics & Reporting\n(SQL-based queries, dashboards)"/]
