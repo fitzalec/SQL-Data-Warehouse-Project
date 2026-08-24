@@ -1,7 +1,6 @@
 # SQL-Data-Warehouse-Project
 Data warehouse with SQL Server, includes ETL processes, data modeling, and analytics. 
----
----
+
 ### Building the Data Warehouse (Data Engineering)
 
 #### Objective
@@ -26,8 +25,6 @@ Develop SQL-based analytics to deliver detailed insights into:
 - Sales Trends
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.
-
----
 
 ---
 # Data Engineering Project Roadmap
@@ -66,3 +63,5 @@ These insights empower stakeholders with key business metrics, enabling strategi
 - Create Data Catalog
 - Extend Data Flow Documentation (Draw.io)
 - Commit Code to Git Repository
+---
+## License
