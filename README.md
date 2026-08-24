@@ -1,11 +1,10 @@
-## About Me
+# About Me
 Hello, my name is **Alec Fitzgerald**. I have created this to showcase some of my skills in SQL. Below you will find a brief outline to the project, including a roadmap that breaks down the data engineering completed. 
-
-
+***
+<br><br>
 
 # SQL-Data-Warehouse-Project
 Data warehouse with SQL Server, includes ETL processes, data modeling, and analytics. 
-
 ## Building the Data Warehouse (Data Engineering)
 
 ### Objective
@@ -31,6 +30,7 @@ Develop SQL-based analytics to deliver detailed insights into:
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.
 
 ---
+<br><br>
 # Data Engineering Project Roadmap
 
 ### Design Data Architecture
@@ -70,3 +70,4 @@ These insights empower stakeholders with key business metrics, enabling strategi
 ---
 ## License
 This project is licensed under the [MIT License](https://github.com/fitzalec/SQL-Data-Warehouse-Project/blob/main/LICENSE). You are free to use, modify, and share this project with proper attribution. 
+***
