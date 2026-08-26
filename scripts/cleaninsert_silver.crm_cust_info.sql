@@ -25,7 +25,7 @@ SELECT
 	cst_create_date
 FROM (
 		--Removing customers that have NULL keys or duplicates--
-		select 
+		SELECT
 		*, 
 		ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last
 		FROM bronze.crm_cust_info
