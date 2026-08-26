@@ -14,11 +14,13 @@ SELECT
 	TRIM(cst_firstname) AS cst_firstname,
 	TRIM(cst_lastname) AS cst_lastname,
 	--Setting new full values for marital status and gender--
-	CASE WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
+	CASE 
+		 WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
 		 WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
 		 ELSE 'N/A'
 	END cst_marital_status,
-	CASE WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
+	CASE 
+		 WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
 		 WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
 		 ELSE 'N/A'
 	END cst_gndr,
