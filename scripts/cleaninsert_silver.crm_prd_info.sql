@@ -10,7 +10,7 @@ INSERT INTO silver.crm_prd_info(
 )
 SELECT
 	prd_id,
-	--Extracting category ID and product key for analytics (matching to px_cat_g1v2 table)--
+	--Extracting category ID and product key for analytics (matching cat_id in px_cat_g1v2 table)--
 	REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,
 	SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,
 	prd_nm,
