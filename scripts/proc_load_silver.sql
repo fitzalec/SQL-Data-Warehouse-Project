@@ -53,13 +53,13 @@ BEGIN
 			CASE 
 				WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
 				WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
-				ELSE 'n/a'
-			END AS cst_marital_status, -- Normalize marital status values to readable format
+				ELSE 'N/A'
+			END cst_marital_status, -- Normalize marital status values to readable format
 			CASE 
 				WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
 				WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
-				ELSE 'n/a'
-			END AS cst_gndr, -- Normalize gender values to readable format
+				ELSE 'N/A'
+			END cst_gndr, -- Normalize gender values to readable format
 			cst_create_date
 		FROM (
 			SELECT
@@ -99,8 +99,8 @@ BEGIN
 				WHEN UPPER(TRIM(prd_line)) = 'R' THEN 'Road'
 				WHEN UPPER(TRIM(prd_line)) = 'S' THEN 'Other Sales'
 				WHEN UPPER(TRIM(prd_line)) = 'T' THEN 'Touring'
-				ELSE 'n/a'
-			END AS prd_line, -- Map product line codes to descriptive values
+				ELSE 'N/A'
+			END prd_line, -- Map product line codes to descriptive values
 			CAST(prd_start_dt AS DATE) AS prd_start_dt,
 			CAST(
 				LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 
@@ -134,26 +134,26 @@ BEGIN
 			CASE 
 				WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
-			END AS sls_order_dt,
+			END sls_order_dt,
 			CASE 
 				WHEN sls_ship_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
-			END AS sls_ship_dt,
+			END sls_ship_dt,
 			CASE 
 				WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
-			END AS sls_due_dt,
+			END sls_due_dt,
 			CASE 
 				WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price) 
 					THEN sls_quantity * ABS(sls_price)
 				ELSE sls_sales
-			END AS sls_sales, -- Recalculate sales if original value is missing or incorrect
+			END sls_sales, -- Recalculate sales if original value is missing or incorrect
 			sls_quantity,
 			CASE 
 				WHEN sls_price IS NULL OR sls_price <= 0 
 					THEN sls_sales / NULLIF(sls_quantity, 0)
 				ELSE sls_price  -- Derive price if original value is invalid
-			END AS sls_price
+			END sls_price
 		FROM bronze.crm_sales_details;
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
@@ -173,16 +173,16 @@ BEGIN
 			CASE
 				WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid)) -- Remove 'NAS' prefix if present
 				ELSE cid
-			END AS cid, 
+			END cid, 
 			CASE
 				WHEN bdate > GETDATE() THEN NULL
 				ELSE bdate
-			END AS bdate, -- Set future birthdates to NULL
+			END bdate, -- Set future birthdates to NULL
 			CASE
 				WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
 				WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
-				ELSE 'n/a'
-			END AS gen -- Normalize gender values and handle unknown cases
+				ELSE 'N/A'
+			END gen -- Normalize gender values and handle unknown cases
 		FROM bronze.erp_cust_az12;
 	    SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
@@ -206,9 +206,9 @@ BEGIN
 			CASE
 				WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 				WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
-				WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
+				WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'N/A'
 				ELSE TRIM(cntry)
-			END AS cntry -- Normalize and Handle missing or blank country codes
+			END cntry -- Normalize and Handle missing or blank country codes
 		FROM bronze.erp_loc_a101;
 	    SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
