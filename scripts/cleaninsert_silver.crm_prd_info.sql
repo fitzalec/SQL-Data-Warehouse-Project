@@ -22,7 +22,7 @@ SELECT
 		 WHEN 'S' THEN 'Other Sales'
 		 WHEN 'T' THEN 'Touring'
 		 ELSE 'N/A'
-	END AS prd_line,
+	END prd_line,
 	CAST(prd_start_dt AS DATE) AS prd_start_dt,
 	--Calculating end date as one day before the next start date for consistency and clarity for cost--
 	CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE) AS prd_end_dt
