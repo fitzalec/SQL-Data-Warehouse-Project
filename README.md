@@ -67,7 +67,15 @@ These insights empower stakeholders with key business metrics, enabling strategi
 - Create Data Catalog
 - Extend Data Flow Documentation (Draw.io)
 - Commit Code to Git Repository
----
+***
+
+<br><br>
+## Data Architecture
+#### This is a Medallion Style Architecture using Bronze, Silver, and Gold layers:
+<img width="962" height="502" alt="Data Warehouse Architecture" src="https://github.com/user-attachments/assets/a849ed10-73f3-49a7-a4ca-0d47fdc293c4" />
+
+***
+
 ## License
 This project is licensed under the [MIT License](https://github.com/fitzalec/SQL-Data-Warehouse-Project/blob/main/LICENSE). You are free to use, modify, and share this project with proper attribution. 
 ***
