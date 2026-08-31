@@ -1,5 +1,5 @@
 # About Me
-Hello, my name is **Alec Fitzgerald**. I have created this to showcase some of my skills in SQL. Below you will find a brief outline to the project, including a roadmap that breaks down the data engineering completed. 
+Hello, my name is **Alec Fitzgerald**. I have created this to showcase some of my skills in SQL. Below you will find a brief outline to the project, including a roadmap that breaks down the data engineering completed. A special thanks to DataWithBaraa for the course and materials. 
 ***
 <br><br>
 
