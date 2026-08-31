@@ -73,7 +73,9 @@ These insights empower stakeholders with key business metrics, enabling strategi
 ## Data Architecture
 #### This is a Medallion Style Architecture using Bronze, Silver, and Gold layers:
 <img width="962" height="502" alt="Data Warehouse Architecture" src="https://github.com/user-attachments/assets/a849ed10-73f3-49a7-a4ca-0d47fdc293c4" />
+
 More information regarding the naming conventions and data representation can be found in the [docs](https://github.com/fitzalec/SQL-Data-Warehouse-Project/tree/main/docs) folder.
+
 ***
 
 ## License
