@@ -27,7 +27,7 @@ Develop SQL-based analytics to deliver detailed insights into:
 - Product Performance
 - Sales Trends
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.
+These insights empower stakeholders with key business metrics, enabling strategic decision-making. The repository focused on analytics can be found [here](https://github.com/fitzalec/SQL-Exploratory-Data-Analysis-Project).
 
 ---
 <br><br>
